@@ -1,23 +1,23 @@
-from django.db import models
-from django.contrib.auth.models import User
-from posts.models import Post
+from django.db import IntegrityError
+from rest_framework import serializers
+from likes.models import Like
 
 
-class Like(models.Model):
+class LikeSerializer(serializers.ModelSerializer):
     """
-    Like model, related to 'owner' and 'post'.
-    'owner' is a User instance and 'post' is a Post instance.
-    'unique_together' makes sure a user can't like the same post twice.
+    Serializer for the Like model
+    The create method handles the unique constraint on 'owner' and 'post'
     """
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(
-        Post, related_name='likes', on_delete=models.CASCADE
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        ordering = ['-created_at']
-        unique_together = ['owner', 'post']
+        model = Like
+        fields = ['id', 'created_at', 'owner', 'post']
 
-    def __str__(self):
-        return f'{self.owner} {self.post}'
+    def create(self, validated_data):
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+                'detail': 'possible duplicate'
+            })

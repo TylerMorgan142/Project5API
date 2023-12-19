@@ -1,23 +1,25 @@
-from django.db import models
-from django.contrib.auth.models import User
-from posts.models import Post
+from rest_framework import generics, permissions
+from Metalhub_api.permissions import IsOwnerOrReadOnly
+from likes.models import Like
+from likes.serializers import LikeSerializer
 
 
-class Like(models.Model):
+class LikeList(generics.ListCreateAPIView):
     """
-    Like model, related to 'owner' and 'post'.
-    'owner' is a User instance and 'post' is a Post instance.
-    'unique_together' makes sure a user can't like the same post twice.
+    List likes or create a like if logged in.
     """
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(
-        Post, related_name='likes', on_delete=models.CASCADE
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
 
-    class Meta:
-        ordering = ['-created_at']
-        unique_together = ['owner', 'post']
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
-    def __str__(self):
-        return f'{self.owner} {self.post}'
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Retrieve a like or delete it by id if you own it.
+    """
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
