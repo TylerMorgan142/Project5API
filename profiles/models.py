@@ -9,8 +9,9 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
-    favorite_artist = models.ManyToManyField('bands.Artist',blank=True)
-    favorite_album = models.ManyToManyField('bands.Album', blank=True)
+    favourite_band = models.ForeignKey(Band, on_delete=models.CASCADE, null=True, blank=True)
+    favourite_album = models.ForeignKey(Album, on_delete=models.CASCADE, null=True, blank=True)
+    favoruite_song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_bbjdnr'
     )
