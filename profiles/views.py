@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, filters
+from django.views import View
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from django.http import JsonResponse
@@ -52,15 +53,15 @@ class UserProfileMusicView(View):
         user_profile = get_object_or_404(Profile, owner__id=user_id)
         data = {
             'user_id': user_id,
-            'favorite_band': {
+            'favourite_band': {
                 'id': user_profile.favorite_band.id,
                 'name': user_profile.favorite_band.name,
             } if user_profile.favorite_band else None,
-            'favorite_album': {
+            'favourite_album': {
                 'id': user_profile.favorite_album.id,
                 'title': user_profile.favorite_album.title,
             } if user_profile.favorite_album else None,
-            'favorite_song': {
+            'favourite_song': {
                 'id': user_profile.favorite_song.id,
                 'title': user_profile.favorite_song.title,
             } if user_profile.favorite_song else None,

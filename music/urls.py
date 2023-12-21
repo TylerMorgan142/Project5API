@@ -1,3 +1,7 @@
+from django.urls import path
+from music.views import GenreListView, ArtistListView, AlbumListView, SongListView
+
+
 urlpatterns = [
     path('genres/', GenreListView.as_view(), name='genre-list'),
     path('artists/', ArtistListView.as_view(), name='artist-list'),
