@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from music.models import Artist, Album, Song
 
 
 class Profile(models.Model):
@@ -8,7 +9,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
-    favourite_band = models.CharField(max_length=255, blank=True)
+    favorite_artist = models.ManyToManyField('bands.Artist',blank=True)
+    favorite_album = models.ManyToManyField('bands.Album', blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_bbjdnr'
     )
