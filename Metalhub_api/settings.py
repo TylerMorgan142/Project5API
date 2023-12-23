@@ -64,7 +64,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    'https://metalhub-api-7e3be8a93e64.herokuapp.com/',
+    '.herokuapp.com',
     '8000-tylermorgan-project5api-lsn1w431egz.ws-eu107.gitpod.io',
 ]
 
