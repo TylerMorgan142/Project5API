@@ -13,7 +13,6 @@ class Artist(models.Model):
     name = models.CharField(max_length=255)
     genre = models.ForeignKey('music.Genre', on_delete=models.SET_NULL, null=True, blank=True)
     description = models.TextField(blank=True)
-    members = models.ManyToManyField('profiles.Profile', related_name='favourite_artists', blank=True)
 
     def __str__(self):
         return self.name
@@ -28,7 +27,6 @@ class Album(models.Model):
 
 class Song(models.Model):
     title = models.CharField(max_length=255)
-    duration = models.DurationField(null=True, blank=True)
     album = models.ForeignKey('music.Album', on_delete=models.CASCADE, related_name='songs')
 
     def __str__(self):
