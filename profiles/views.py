@@ -53,10 +53,10 @@ class UserProfileMusicView(View):
         user_profile = get_object_or_404(Profile, owner__id=user_id)
         data = {
             'user_id': user_id,
-            'favourite_band': {
-                'id': user_profile.favorite_band.id,
-                'name': user_profile.favorite_band.name,
-            } if user_profile.favorite_band else None,
+            'favourite_artist': {
+                'id': user_profile.favorite_artist.id,
+                'name': user_profile.favorite_artist.name,
+            } if user_profile.favorite_artist else None,
             'favourite_album': {
                 'id': user_profile.favorite_album.id,
                 'title': user_profile.favorite_album.title,
