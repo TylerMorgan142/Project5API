@@ -9,6 +9,7 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
+    content = models.TextField(blank=True)
     favourite_artist = models.ForeignKey('music.Artist', on_delete=models.CASCADE, null=True, blank=True)
     favourite_album = models.ForeignKey('music.Album', on_delete=models.CASCADE, null=True, blank=True)
     favourite_song = models.ForeignKey('music.Song', on_delete=models.CASCADE, null=True, blank=True)
