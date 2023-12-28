@@ -61,9 +61,5 @@ class UserProfileMusicView(View):
                 'id': user_profile.favorite_album.id,
                 'title': user_profile.favorite_album.title,
             } if user_profile.favorite_album else None,
-            'favourite_song': {
-                'id': user_profile.favorite_song.id,
-                'title': user_profile.favorite_song.title,
-            } if user_profile.favorite_song else None,
         }
         return JsonResponse(data)
