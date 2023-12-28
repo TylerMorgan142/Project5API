@@ -12,7 +12,6 @@ class Profile(models.Model):
     content = models.TextField(blank=True)
     favourite_artist = models.ForeignKey('music.Artist', on_delete=models.CASCADE, null=True, blank=True)
     favourite_album = models.ForeignKey('music.Album', on_delete=models.CASCADE, null=True, blank=True)
-    favourite_song = models.ForeignKey('music.Song', on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_bbjdnr'
     )
