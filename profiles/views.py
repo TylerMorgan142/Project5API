@@ -63,3 +63,19 @@ class UserProfileMusicView(View):
             } if user_profile.favourite_album else None,
         }
         return JsonResponse(data)
+
+    def put(self, request, user_id):
+        user_profile = get_object_or_404(Profile, owner__id=user_id)
+
+        # Get the primary key values from the request data
+        favourite_artist_pk = request.data.get('favourite_artist', None)
+        favourite_album_pk = request.data.get('favourite_album', None)
+
+        # Update the user profile with the provided favourite_artist and favourite_album
+        user_profile.favourite_artist_id = favourite_artist_pk
+        user_profile.favourite_album_id = favourite_album_pk
+        user_profile.save()
+
+        # Serialize and return the updated profile
+        serializer = ProfileSerializer(user_profile)
+        return JsonResponse(serializer.data)
