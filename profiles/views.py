@@ -48,19 +48,6 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
 
-    def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-
-        # Explicitly set favourite_artist and favourite_album during the update
-        serializer.save(favourite_artist=request.data.get('favourite_artist'),
-                        favourite_album=request.data.get('favourite_album'))
-
-        return Response(serializer.data)
-
-
 class UserProfileMusicView(View):
     def get(self, request, user_id):
         user_profile = get_object_or_404(Profile, owner__id=user_id)
