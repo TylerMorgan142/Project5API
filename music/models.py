@@ -10,7 +10,7 @@ class Album(models.Model):
         return self.title
 
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, null=True, blank=True)
     rating = models.PositiveIntegerField(choices=[(i, i) for i in range(1, 6)])
     title = models.CharField(max_length=255, null=True, blank=True, default=None)

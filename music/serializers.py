@@ -32,7 +32,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content','like_id', 'likes_count', 
-            'comments_count', 'rating',
+            'comments_count', 'rating'
         ]
 
 class AlbumSerializer(serializers.ModelSerializer):
