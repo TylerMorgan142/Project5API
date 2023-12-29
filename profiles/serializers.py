@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
-
+from music.serializers import ArtistSerializer, AlbumSerializer
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -10,6 +10,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    favourite_artist = ArtistSerializer(read_only=True)
+    favourite_album = AlbumSerializer(read_only=True)
 
     def get_is_owner(self, obj):
         request = self.context['request']
