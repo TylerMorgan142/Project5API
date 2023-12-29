@@ -54,12 +54,12 @@ class UserProfileMusicView(View):
         data = {
             'user_id': user_id,
             'favourite_artist': {
-                'id': user_profile.favorite_artist.id,
-                'name': user_profile.favorite_artist.name,
-            } if user_profile.favorite_artist else None,
+                'id': user_profile.favourite_artist.id,
+                'name': user_profile.favourite_artist.name,
+            } if user_profile.favourite_artist else None,
             'favourite_album': {
-                'id': user_profile.favorite_album.id,
-                'title': user_profile.favorite_album.title,
-            } if user_profile.favorite_album else None,
+                'id': user_profile.favourite_album.id,
+                'title': user_profile.favourite_album.title,
+            } if user_profile.favourite_album else None,
         }
         return JsonResponse(data)
