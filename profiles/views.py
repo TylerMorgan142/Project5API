@@ -7,6 +7,8 @@ from django.http import JsonResponse
 from Metalhub_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 
 class ProfileList(generics.ListAPIView):
@@ -79,3 +81,9 @@ class UserProfileMusicView(View):
         # Serialize and return the updated profile
         serializer = ProfileSerializer(user_profile)
         return JsonResponse(serializer.data)
+
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def user_profile_music_view(request, user_id):
+    view = UserProfileMusicView.as_view()
+    return view(request, user_id)
