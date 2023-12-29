@@ -1,20 +1,20 @@
 from rest_framework import generics
-from .models import Artist, Album
-from .serializers import  ArtistSerializer, AlbumSerializer
+from .models import Album, Review
+from .serializers import AlbumSerializer, ReviewSerializer
 
 
+class ReviewList(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
 
-class ArtistListView(generics.ListAPIView):
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
 
 class AlbumListView(generics.ListAPIView):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
-
-class ArtistCreateView(generics.CreateAPIView):
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
 
 class AlbumCreateView(generics.CreateAPIView):
     queryset = Album.objects.all()

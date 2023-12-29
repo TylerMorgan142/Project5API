@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from .models import Artist, Album
+from .models import Album, Review
 
-class ArtistSerializer(serializers.ModelSerializer):
+
+class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Artist
+        model = Review
         fields = '__all__'
 
 class AlbumSerializer(serializers.ModelSerializer):
