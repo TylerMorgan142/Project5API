@@ -121,7 +121,7 @@ MIDDLEWARE = [
 #     ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://metalhub-api-7e3be8a93e64.herokuapp.com",
+    "https://metalhub-api-7e3be8a93e64.herokuapp.com", "https://metalhub-5230d8c858ac.herokuapp.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
