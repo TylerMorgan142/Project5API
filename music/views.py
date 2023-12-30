@@ -29,7 +29,7 @@ class ReviewList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
-    
+    queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
