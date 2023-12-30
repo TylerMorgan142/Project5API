@@ -120,9 +120,9 @@ MIDDLEWARE = [
 #         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
 #     ]
 
-CORS_ALLOWED_ORIGINS = {
+CORS_ALLOWED_ORIGINS = [
     "https://metalhub-api-7e3be8a93e64.herokuapp.com",
-}
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
