@@ -121,7 +121,10 @@ MIDDLEWARE = [
 #     ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://metalhub-api-7e3be8a93e64.herokuapp.com", "https://metalhub-5230d8c858ac.herokuapp.com","https://3000-tylermorgan-project5met-bbfwj07mk4e.ws-eu107.gitpod.io/",
+    "https://metalhub-api-7e3be8a93e64.herokuapp.com", 
+    "https://metalhub-5230d8c858ac.herokuapp.com",
+    "http://localhost:3000",
+    "https://3000-tylermorgan-project5met-bbfwj07mk4e.ws-eu107.gitpod.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
