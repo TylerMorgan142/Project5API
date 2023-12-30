@@ -23,16 +23,6 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
-    def get_post(self, obj):
-        if obj.post:
-            return {'id': obj.post.id, 'title': obj.post.title}
-        return None
-
-    def get_review(self, obj):
-        if obj.review:
-            return {'id': obj.review.id, 'title': obj.review.title}
-        return None
-
     class Meta:
         model = Comment
         fields = [
