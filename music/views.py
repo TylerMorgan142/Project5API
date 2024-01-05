@@ -37,7 +37,3 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
 class AlbumListView(generics.ListAPIView):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
-
-class AlbumCreateView(generics.CreateAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumSerializer
