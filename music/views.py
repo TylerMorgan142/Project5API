@@ -1,4 +1,5 @@
 from django.db.models import Count
+from rest_framework.generics import RetrieveAPIView
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from Metalhub_api.permissions import IsOwnerOrReadOnly
@@ -35,5 +36,9 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AlbumListView(generics.ListAPIView):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+
+class AlbumDetailView(RetrieveAPIView):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
