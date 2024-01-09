@@ -6,7 +6,6 @@ from .models import Comment
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
-from music.models import Review
 from posts.models import Post
 from music.serializers import AlbumSerializer
 from posts.serializers import PostSerializer
@@ -21,7 +20,6 @@ class CommentSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
     post = serializers.SerializerMethodField()
-    review = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -43,24 +41,11 @@ class CommentSerializer(serializers.ModelSerializer):
             return PostSerializer(post_data).data
         return None
 
-    def get_review(self, obj):
-        if obj.review:
-            review_data = {
-                'id': obj.review.id,
-                'owner': obj.review.owner.username,
-                'album': AlbumSerializer(obj.review.album).data,
-                'rating': obj.review.rating,
-                'title': obj.review.title,
-                'content': obj.review.content,
-            }
-            return review_data
-        return None
-
     class Meta:
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'post', 'review', 'created_at', 'updated_at', 'content'
+            'post', 'created_at', 'updated_at', 'content'
         ]
 
 

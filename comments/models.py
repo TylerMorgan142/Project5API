@@ -1,16 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
-from music.models import Review
+
 
 
 class Comment(models.Model):
     """
-    Comment model, related to User, Post and Review
+    Comment model, related to User and Post
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, null=True, blank=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField()
