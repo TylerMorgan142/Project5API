@@ -1,29 +1,93 @@
 # Testing
 
-All apps have been manually tested and are all functional
+## Manual Testing
 
-    Comments can be successfully created
+### Comments
 
-    A specific users followed profiles and number of followed profiles can be viewed successfully
+    An admin is able to delete comments
 
-    All likes are visible and show the all the releveant information related to the likes
+    If a logged in user enters the /comments url, the comment list renders all comments as an array of objects
 
-    The Album list can be viewed and shows all the releveant information related to the albums
+    A logged in user is able to create comments and the array is updated
 
-    Each albums detail can be viewed as well
+    A logged in user can enter the url for a speicific comment using the comments id,
+    If they own the comment they can update and delete the comment
 
-    The Review list can be viewed and shows all the releveant information related to the Review
+    If a user updates the comments data, the change is saved in the database
 
-    Each reviews detail can be viewed as well
+### Profiles
 
-    The Posts list can be viewed and shows all relevant information related to the Post
+    An admin is able to delete profiles
+    
+    A user is able to create a profile
 
-    Each posts detail can be viewed as well
+    If a logged in user enters the /profiles url, the profile list renders all profiles as an array of objects
 
-    The Profiles list can be viewd and shows all relevant information related to the profile
+    A logged in user can enter the url for a specific profile using the profiles id,
+    If they own the profile they can update and delete it
 
-    Each profile detail can be viewed as well
+    If a user updates a profiles data, the change is saved in the database
 
+
+
+ ### Posts
+
+    An admin is able to delete posts
+        
+    A logged in user is able to create a post
+
+    If a logged in user enters the /posts url, the posts list renders all posts as an array of objects
+
+    A logged in user can enter the url for a specific post using the posts id,
+    If the user owns the posts they can update and delete it
+
+    If a user updates a posts data, the change is saved in the database
+
+### Likes
+
+    A logged in user is able to like a post
+
+    If a logged in user enters the /likes url, the like list renders all comments as an array of objects
+    
+    A logged in user can enter the url for a specific like by using the likes id
+
+    If a user likes a post the like is saved in the database
+
+
+### Followers
+
+    A logged in user is able to follow other users
+
+    If a logged in user enters the /followers url, the follower list renders all follower data as an array of objects
+
+    A logged in user can enter the url for a specific follower by using the follower id
+
+    If a user follows another user it is saved in the database
+
+### Albums
+
+    An admin is able to create,update and delete albums
+
+    If a logged in user enters the /albums url, the album list renders all albums as an array of objects
+
+    A logged in user can enter url for a specific album by using the albums id
+
+    If an album is created, updated or deleted the it is saved in the database
+
+### Reviews
+
+    An admin is able to delete reviews
+
+    A logged in user is able to create a review
+
+    If a logged in user enters the /reviews url, the reviews list renders all reviews as an array of objects
+
+    A logged in user can enter the url for a specific review using the reviews id,
+    If the user owns the review they can update and delete it
+
+    If a user updates a reviews data, the change is saved in the database
+
+    
 # Deployment
 
 This project was deployed to Heroku at [this location](https://metalhub-api-7e3be8a93e64.herokuapp.com/)
